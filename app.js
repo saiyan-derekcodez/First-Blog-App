@@ -20,7 +20,7 @@ async function startApp() {
 
   console.log("Connecting to database...");
 
-  await mongoose.connect(DB_URI);
+  // await mongoose.connect(DB_URI);
 
   app.use("", apiRoutes);
 
