@@ -25,4 +25,6 @@ const blogpostSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const blogpostModel = mongoose.Model("Blog post", blogpostSchema);
+const blogpostModel = mongoose.model("Blog post", blogpostSchema);
+
+export default blogpostModel;
