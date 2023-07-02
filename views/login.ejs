@@ -3,22 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register to Become a New Member</title>
+    <title>Login | BLoggings</title>
     <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
-    crossorigin="anonymous"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" type="text/css" href="./responsive.css" />
   </head>
-  <body class="register-wallpaper">
-    <nav class="navbar navbar-expand-lg bg-dark">
+  <body>
+     <nav class="navbar navbar-expand-lg bg-dark">
       <div class="container-fluid text-light">
         <a class="navbar-brand me-auto" href="#">Boggings</a>
         <button
-          class="navbar-toggler"
+          class="navbar-toggler "
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
@@ -44,19 +44,19 @@
                 Features
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/business">Business</a></li>
-                <li><hr class="dropdown-divider"/></li>
-                <li><a class="dropdown-item" href="/gaming">Gaming</a></li>
-                <li><hr class="dropdown-divider"/></li>
-                <li>
+                <a href="/" class="footer-link"></a><li><a class="dropdown-item" href="/business">Business</a></li>
+                <a href="/" class="footer-link"></a><li><hr class="dropdown-divider"/></li>
+                <a href="/" class="footer-link"></a><li><a class="dropdown-item" href="/gaming">Gaming</a></li>
+                <a href="/" class="footer-link"></a><li><hr class="dropdown-divider"/></li>
+                <a href="/" class="footer-link"></a><li>
                   <a class="dropdown-item" href="/technology">Technology</a>
                 </li>
-                <li><hr class="dropdown-divider"/></li>
-                <li><a class="dropdown-item" href="/science">Science</a></li>
-                <li><hr class="dropdown-divider"/></li>
-                <li><a class="dropdown-item" href="/shop">Shop</a></li>
-                <li><hr class="dropdown-divider"/></li>
-                <li><a class="dropdown-item" href="/health">Health</a></li>
+                <a href="/" class="footer-link"></a><li><hr class="dropdown-divider"/></li>
+                <a href="/" class="footer-link"></a><li><a class="dropdown-item" href="/science">Science</a></li>
+                <a href="/" class="footer-link"></a><li><hr class="dropdown-divider"/></li>
+                <a href="/" class="footer-link"></a><li><a class="dropdown-item" href="/shop">Shop</a></li>
+                <a href="/" class="footer-link"></a><li><hr class="dropdown-divider"/></li>
+                <a href="/" class="footer-link"></a><li><a class="dropdown-item" href="/health">Health</a></li>
               </ul>
             </li>
             <li class="nav-item">
@@ -83,26 +83,15 @@
       </div>
     </nav><br><br><br>
 
-      <div class="register ">
-    
-          <h1>Welcome👋, Register to start reading and writing blogs</h1>
-        <h4 class="mb-5">Lets get started</h4>
-        
-        <hr class="register-divider">
-        
-        <form class="row g-3 needs-validation" action="/register" method="post" >
-          <div class="col-md-4 position-relative">
-            <label for="username" class="form-label"><h5>Username</h5></label>
-            <div class="input-group has-validation">
-              <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
-              <input type="text" class="form-control" name="username" id="username" placeholder="special53" required>
-            </div>
-          </div>
-      <div class="col-md-4 position-relative">
-        <label for="name" class="form-label"><h5>Full Name</h5> </label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="John Doe" required>
-      </div>
-      <div class="col-md-4 position-relative">
+    <div class="register">
+      <h1>Log In</h1>
+      <% if (typeof error !== 'undefined') { %>
+      <h6 class="error"><%= error %></h6>
+      <% } %>
+      <hr class="register-divider">
+
+       <form class="row g-3 needs-validation" action="/login" method="post" >
+      <div class="col-md-12 position-relative">
         <label for="email" class="form-label"><h5>Email Address</h5></label>
         <input type="email" class="form-control" id="email" name="email" placeholder="you2@gmail.com" required>
       </div>
@@ -110,20 +99,11 @@
         <label for="password" class="form-label"><h5>Password</h5></label>
         <input type="password" class="form-control" id="password" name="password" required>
       </div>
-      <!-- <div class="col-md-6 position-relative">
-        <label for="validationTooltip05" class="form-label"><h5>Bio</h5></label>
-        <input type="text" class="form-control" id="validationTooltip05" required>
-        <div class="invalid-tooltip">
-          Please provide a valid zip.
-        </div>
-      </div> -->
       <div class="col-12">
-        <button class="btn btn-primary" type="submit">Sign up</button>
+        <button class="btn btn-primary" type="submit">Log in</button>
       </div>
         </form>
-      </div>
-
-  
+    </div>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
