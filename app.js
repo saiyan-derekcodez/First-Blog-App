@@ -4,13 +4,22 @@ config();
 import express from "express";
 import mongoose, { Mongoose } from "mongoose";
 import bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
+import multer from "multer";
+import path from "path";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
 import apiRoutes from "./routes/app.routes.js";
 
 const app = express();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.static("./public"));
 
 const DB_URI = process.env.DB_URI;
