@@ -1,4 +1,127 @@
 * {
     box-sizing: border-box !important;
+    text-align: center;
 }
 
+.me-auto {
+    margin-right: 42% !important;
+}
+
+nav.navbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.nav-link, .navbar-brand {
+    color: #fff ;
+}
+
+.navbar-brand:hover {
+    color: #a8a7a7;
+}
+
+.nav-link:hover {
+    text-decoration-color: #fff;
+    text-decoration: underline;
+    color: #a8a7a7;
+}
+
+.navbar-toggler, .navbar-toggler-icon {
+    border-color: #fff;
+    background-color: #fff;
+}
+
+a.text-muted, .flex-column {
+    color: #b4b1b1 !important;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+.footer-link {
+    text-decoration: none;
+    color: #e0e0e0;
+}
+
+.first-paper {
+    background-image: url('https://images.unsplash.com/photo-1675186402592-05c87ae206a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDU5fHhIeFlUTUhMZ09jfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 80vh;
+    text-align: center;
+}
+
+.text-footer {
+    color: #a8a7a7;
+}
+
+.top-text {
+    width: 100px;
+    background-color: red;
+    color: #fff;
+    padding: 5px;
+}
+
+.error {
+    color: #ff0000;
+}
+
+.small-text {
+    text-align: left;
+    color: #fff;
+}
+
+.profile-pic {
+    width: 20px;
+    border-radius: 100%;
+}
+
+.title {
+    color: white;
+    padding: 5px;
+}
+
+footer {
+    background-color: #000000;
+}
+
+.post-list {
+    list-style-type: circle;
+}
+
+.divider {
+    background-color: white;
+    width: 100%;
+}
+
+/* div on home-page wallpaper */
+.adjust {
+    position: absolute;
+    top: 60%;
+    left: 70px;
+}
+
+/* for the register page */
+.register {
+    border: 2px solid #000000;
+    padding: 90px;
+    margin: 2% 20%;
+    box-shadow: 5px 5px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* div divider for register page*/
+div.register-divider {
+    background-color: #000000;
+    width: 100%;
+    height: inherit;
+}
+
+.form-control, .input-group-text {
+    border: 2px solid #000;
+}
