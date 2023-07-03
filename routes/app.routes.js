@@ -32,6 +32,10 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
+router.get("/profile", (req, res) => {
+  res.render("profile");
+});
+
 router.get("/Newblog", async (req, res) => {
   try {
     const cookie = req.cookies;
