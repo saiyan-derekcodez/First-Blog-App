@@ -90,6 +90,10 @@
     
           <h1>Welcome👋, Register to start reading and writing blogs</h1>
         <h4 class="mb-5">Lets get started</h4>
+
+        <% if (typeof error !== 'undefined') { %>
+      <h6 class="error"><%= error %></h6>
+      <% } %>
         
         <hr class="register-divider">
         
