@@ -90,7 +90,7 @@
       <h1>Oh! Hi there again 🙋‍♂️,Let's write about something</h1>
       <hr class="register-divider">
 
-      <form class="row g-3 needs-validation" action="/Newblog" method="POST" enctype="multipart/form-data">
+      <form class="row g-3 needs-validation" action="/Newblog" method="POST">
   <div class="col-md-6 position-relative">
     <label for="title" class="form-label"><h5>Blog Title</h5></label>
     <div class="input-group has-validation">
@@ -116,8 +116,8 @@
     />
   </div>
   <div class="col-md-12 position-relative">
-    <label for="file" class="form-label"><h5>Add a picture</h5></label>
-    <input class="form-control" type="file" id="file" name="file" multiple>
+    <label for="image" class="form-label"><h5>Add a picture</h5></label>
+    <input class="form-control" type="text" id="image" name="image" >
   </div>
   <div class="col-md-12 position-relative">
     <label for="content" class="form-label"><h5>Content</h5></label>
@@ -132,18 +132,6 @@
       name="author"
       placeholder="you2@gmail.com"
       value="<%= author %>"
-      hidden
-    />
-  </div>
-  <div class="col-md-4 position-relative">
-    <label for="postStatus" class="form-label"><h5></h5></label>
-    <input
-      type="text"
-      class="form-control"
-      id="postStatus"
-      name="postStatus"
-      placeholder="you2@gmail.com"
-      value="<%= post %>"
       hidden
     />
   </div>
