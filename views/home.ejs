@@ -91,7 +91,7 @@
       </div>
     </nav>
 
-    <div class="first-paper">
+ <div class="first-paper">
       <div class="adjust">
         <h5 class="top-text">Arts</h5>
         <h1 class="title">Be Inspired With Dark Photo And Colorful Indoor Style</h1>
@@ -104,7 +104,7 @@
         <% for (let i = 0; i < techs.length; i++) { %>
           <%const tech =  techs[i];%>
           <% if (i >= 3) break; %>
-        <div class="col-md-4 mt-0 mb-3">
+        <div class="col-md-4  mt-0 mb-3">
           <div class="card text-bg-dark">
             <img style="height: 50vh;" src="<%= tech.image %>" alt="...">
             <div class="card-img-overlay">
@@ -121,13 +121,14 @@
       </div>
     </div>
 
-    <div class="container-fluid mb-5 mt-5">
+
+<div class="container-fluid mb-5 mt-5">
       <div class="row">
         <h1>MORE FROM US</h1>
         <% for (let i = 0; i < AllCategory.length; i++) { %>
           <%const categories =  AllCategory[i];%>
           <% if (i >= 6) break; %>
-        <div class="card mb-3" style="max-width: 540px;">
+        <div class="card mb-3 col-lg-3 col-sm-12 col-md-2  card-width" style="max-width: 540px;width: 16rem;">
           <div class="row g-0">
             <div class="col-md-4" style="height: 30vh !important;">
               <img style="height: 30vh !important;" src="<%= categories.image %>" class="img-fluid rounded-start" alt="...">
@@ -178,8 +179,8 @@
         <% for (let d = AllCategory.length - 1; d >= 0; d--) { %>
           <%const category =  AllCategory[d];%>
           <% if (AllCategory.length - d > 8) {break;}; %>
-          <div class="col-md-3 mb-2">
-            <div class="card" style="width: 18rem;">
+          <div class="col-md-6 col-lg-3 col-sm-12 mb-2 recent-card">
+            <div class="card" style="width: 16rem;">
               <img style="height: 30vh;" src="<%= category.image %>" class="card-img-top" alt="...">
               <div class="card-body">
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -189,6 +190,8 @@
         <% } %>
       </div>
     </div>
+
+
 
     <footer class=" text-light">
       <div class="container-fluid mb-5">
@@ -219,13 +222,7 @@
       </div>
       <hr class="divider "/>
       <div class="d-flex text-footer">
-        <p class="me-auto ms-5 d-flex">Copyright All rights reserved</p>
-        <div class="ms-5 d-flex">
-          <p class="me-3">About Us</p>
-          <p class="me-3">Private policy</p>
-          <p class="me-3">Forums</p>
-          <p class="me-3">Community</p> 
-        </div>
+        <p class="me-auto ms-5 text-center">Copyright All rights reserved</p>
       </div>
     </footer> 
     <script 

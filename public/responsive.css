@@ -2,7 +2,7 @@
 @media screen and (max-width: 480px) {
     .adjust {
         position: absolute;
-        top: 45%;
+        top: 40%;
         left: 10px;
         text-align: left;
     }
@@ -10,11 +10,25 @@
         border: 0px solid;
         box-shadow: none;
         margin: 0;
-        /* margin-top: 120px; */
         padding: 20px;
     }
     div.d-flex.text-footer {
         display: block !important;
+    }
+    .black-div {
+        padding: 0;
+    }
+    .recent-card {
+        width: 90%;
+    }
+    h6.card-title.overlay-head {
+        margin-top: 50vw;
+    }
+    h5.card-title.overlay-head {
+        margin-top: 35vw;
+    }
+    h6.card-title.mt-5 {
+        margin-top: 5vw !important;
     }
 }
 
@@ -23,7 +37,7 @@
 @media screen and (min-width: 481px) and (max-width: 768px) {
     .adjust {
         position: absolute;
-        top: 50%;
+        top: 48%;
         left: 20px;
     }
     .register {    
@@ -39,23 +53,46 @@
 /* for tablets */
 @media screen and (min-width: 769px) and (max-width: 1024px) {
     .me-auto {
-        margin-right: 7% !important;
+        margin-right: 0px !important;
     }
     .adjust {
         position: absolute;
-        top: 45%;
+        top: 44%;
         left: 70px;
    }
+    a.navbar-brand.me-auto {
+        margin-left: 0;
+    }
     .register {
         margin: 0 30px;
         margin-top: 120px;
         padding: 10px;
     }
+    .col-md-6.col-lg-3.col-sm-12.mb-2.recent-card {
+        margin-right: 80px;
+        /* margin-left: 13px; */
+    }
+     .card.mb-3.col-lg-3.col-sm-12.col-md-2.card-width {
+         margin-left: 50px;
+         /* margin-right: 20px; */
+    }
 }
 
 /* for larger desktop */
 @media screen and (min-width: 1025px) and (max-width: 1281px) {
+    .adjust {
+            position: absolute;
+            top: 46%;
+            left: 70px;
+        }
     .me-auto {
-        margin-right: 25% !important;
+        margin-right: 10% !important;
+    }
+    .col-md-6.col-lg-3.col-sm-12.mb-2.recent-card {
+        margin-right: 80px;
+        margin-left: 13px;
+    }
+    .card.mb-3.col-lg-3.col-sm-12.col-md-2.card-width {
+        margin-left: 70px;
     }
 }
