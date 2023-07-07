@@ -99,21 +99,94 @@
       </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid mb-5 mt-5">
       <div class="row">
-        <div class="col-md-4">
+        <% for (let i = 0; i < techs.length; i++) { %>
+          <%const tech =  techs[i];%>
+          <% if (i >= 3) break; %>
+        <div class="col-md-4 mt-0 mb-3">
           <div class="card text-bg-dark">
-            <img style="height: 40vh;" src="https://images.unsplash.com/photo-1675186402592-05c87ae206a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDU5fHhIeFlUTUhMZ09jfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60" class="card-img" alt="...">
+            <img style="height: 50vh;" src="<%= tech.image %>" alt="...">
             <div class="card-img-overlay">
-              <h5 class="top-text">Arts</h5>
-              <h3 class="card-title overlay-head">Card title</h3>
+              <h5 class="top-text"><%= tech.category %></h5>
+              <h5 class="card-title overlay-head"><%= tech.title %></h5>
               <h6 class="card-text"><small>
                 <img class="profile-pic" src="https://images.unsplash.com/photo-1675186402592-05c87ae206a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDU5fHhIeFlUTUhMZ09jfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="">
-                David 🕑Apr 24, 2018
+                <%= tech.author %> 🕑 <%= tech.createdAt.toLocaleDateString() %>
               </small></h6>
             </div>
           </div>
         </div>
+        <% } %>
+      </div>
+    </div>
+
+    <div class="container-fluid mb-5 mt-5">
+      <div class="row">
+        <h1>MORE FROM US</h1>
+        <% for (let i = 0; i < AllCategory.length; i++) { %>
+          <%const categories =  AllCategory[i];%>
+          <% if (i >= 6) break; %>
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-4" style="height: 30vh !important;">
+              <img style="height: 30vh !important;" src="<%= categories.image %>" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8" style="height: 30vh !important;">
+              <div class="card-body">
+                <h6 class="top-text"><%= categories.category %></h6>
+                <h6 class="card-title mt-5"><%= categories.title %></h6>
+                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+
+    <div class="black-div">
+      <div class="blackdiv-content">
+        <h1 style="color: #fff;" class="mb-5">ARTICLES YOU MAY KNOW</h1>
+        <div class="container-fluid">
+          <div class="row">
+          <% for (let i = wellnesss.length - 1; i >= 0 ; i--) { %>
+          <%const wellness =  wellnesss[i];%>
+          <% if (wellnesss.length - i > 3) {break}; %>
+          <div class="col-md-4 mt-0 mb-3">
+            <div class="card text-bg-dark">
+              <img style="height: 50vh;" src="<%= wellness.image %>" alt="...">
+              <div class="card-img-overlay">
+                <h5 class="top-text"><%= wellness.category %></h5>
+                <h6 class="card-title overlay-head"><%= wellness.title %></h6>
+                <p class="card-text"><small>
+                  <img class="profile-pic" src="https://images.unsplash.com/photo-1675186402592-05c87ae206a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDU5fHhIeFlUTUhMZ09jfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="">
+                  <%= wellness.author %> 🕑 <%= wellness.createdAt.toLocaleDateString() %>
+                </small></p>
+              </div>
+            </div>
+        </div>
+        <% } %>
+          </div>
+          </div>
+      </div>
+    </div>
+
+    <div class="container-fluid mb-5 mt-5">
+      <div class="row">
+        <h1>RECENT POSTS</h1>
+        <% for (let d = AllCategory.length - 1; d >= 0; d--) { %>
+          <%const category =  AllCategory[d];%>
+          <% if (AllCategory.length - d > 8) {break;}; %>
+          <div class="col-md-3 mb-2">
+            <div class="card" style="width: 18rem;">
+              <img style="height: 30vh;" src="<%= category.image %>" class="card-img-top" alt="...">
+              <div class="card-body">
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+            </div>
+          </div>
+        <% } %>
       </div>
     </div>
 
