@@ -20,8 +20,20 @@ const userFiles = [];
 
 const upload = multer({ storage: storage });
 
-router.get("/", (req, res) => {
-  res.render("home");
+router.get("/", async (req, res) => {
+  try {
+    const techCategory = await blogpostModel.find({ category: "Technology" });
+    const wellnessCategory = await blogpostModel.find({ category: "Wellness" });
+    const AllCategory = await blogpostModel.find({});
+
+    res.render("home", {
+      techs: techCategory,
+      AllCategory: AllCategory,
+      wellnesss: wellnessCategory,
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 });
 
 router.get("/register", (req, res) => {
@@ -32,8 +44,33 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-router.get("/profile", (req, res) => {
-  res.render("profile");
+router.get("/profile", async (req, res) => {
+  try {
+    const cookie = req.cookies;
+
+    if (typeof cookie.id === "undefined") {
+      res.render("login", { error: "Please login your signed out" });
+      return;
+    }
+
+    const profile = await userModel.findOne({ username: cookie.id });
+
+    if (profile === null) {
+      res.render("register", { error: "Please create an account" });
+      return;
+    }
+
+    // gets the authors name from the users database
+    const author = await userModel.findOne({ name: profile.name });
+
+    // gets the authors blog from the blogs database
+    const myBlogs = await blogpostModel.find({ author: author.name });
+
+    res.render("profile", {
+      myBlogs,
+      name: profile.name,
+    });
+  } catch (error) {}
 });
 
 router.get("/Newblog", async (req, res) => {
@@ -41,18 +78,18 @@ router.get("/Newblog", async (req, res) => {
     const cookie = req.cookies;
 
     if (typeof cookie.id === "undefined") {
-      res.redirect("/login");
+      res.render("login", { error: "Please login your signed out" });
       return;
     }
 
     const user = await userModel.findOne({ username: cookie.id });
 
     if (user === null) {
-      res.redirect("/register");
+      res.render("register", { error: "Please create an account" });
       return;
     }
 
-    res.render("new-blog", { author: user.name, post: "Posted" });
+    res.render("new-blog", { author: user.name });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -91,29 +128,21 @@ router.post("/register", async (req, res) => {
     res.clearCookie("id");
     res.clearCookie("dis");
 
-    res.cookie("id", req.body.email);
+    res.cookie("id", req.body.username);
 
     res.redirect("/");
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 
-  res.render("register");
+  // res.render("register");
 });
 
-router.post("/Newblog", upload.single("file"), async (req, res) => {
+router.post("/Newblog", async (req, res) => {
   try {
-    const fileData = {
-      filePath: req.file.path,
-      fileData: req.file.buffer,
-      userId: req.body.userId, // Assuming userId is sent as a field in the form
-    };
-
-    userFiles.push(fileData);
-
     const blogPost = req.body;
 
-    const blogPostRender = await blogpostModel.create(blogPost);
+    await blogpostModel.create(blogPost);
 
     res.redirect("/");
   } catch (error) {
