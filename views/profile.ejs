@@ -105,7 +105,7 @@
       <div class="profile-picture">
         <!-- Profile picture image -->
       </div>
-      <h1 class="profile-name">John Doe</h1>
+      <h1 class="profile-name"><%= name %></h1>
     </div>
       </div>
       <div class="container-fluid profile-grid">
@@ -116,6 +116,17 @@
           <div class="col-md-12">
             <div><h1>My Blogs</h1></div>
           </div>
+          <% for (let d = myBlogs.length - 1; d >= 0; d--) { %>
+          <%const blog =  myBlogs[d];%>
+            <div class="col-md-3 mb-2">
+            <div class="card" style="width: 18rem;">
+              <img style="height: 30vh;" src="<%= blog.image %>" class="card-img-top" alt="...">
+              <div class="card-body">
+                <p class="card-text"></p>
+              </div>
+            </div>
+          </div>
+          <% } %>
         </div>
       </div>
       </div>
