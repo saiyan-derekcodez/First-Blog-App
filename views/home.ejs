@@ -122,29 +122,23 @@
     </div>
 
 
-<div class="container-fluid mb-5 mt-5">
+<!-- <div class="container-fluid mb-5 mt-5">
       <div class="row">
         <h1>MORE FROM US</h1>
         <% for (let i = 0; i < AllCategory.length; i++) { %>
           <%const categories =  AllCategory[i];%>
-          <% if (i >= 6) break; %>
-        <div class="card mb-3 col-lg-3 col-sm-12 col-md-2  card-width" style="max-width: 540px;width: 16rem;">
-          <div class="row g-0">
-            <div class="col-md-4" style="height: 30vh !important;">
-              <img style="height: 30vh !important;" src="<%= categories.image %>" class="img-fluid rounded-start" alt="...">
-            </div>
-            <div class="col-md-8" style="height: 30vh !important;">
-              <div class="card-body">
-                <h6 class="top-text"><%= categories.category %></h6>
-                <h6 class="card-title mt-5"><%= categories.title %></h6>
-                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-              </div>
-            </div>
-          </div>
-        </div>
+          <% if (i >= 2) break; %>
+          <div class="card mb-3 ms-4" style="width: 96% !important;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+  </div>
+</div>
         <% } %>
       </div>
-    </div>
+    </div> -->
 
     <div class="black-div">
       <div class="blackdiv-content">
@@ -194,7 +188,7 @@
 
 
     <footer class=" text-light">
-      <div class="container-fluid mb-5">
+      <div class="container-fluid">
         <div class="row">
           <div class="col-md-4">
             <h4>ABOUT</h4>
@@ -221,8 +215,8 @@
         </div>
       </div>
       <hr class="divider "/>
-      <div class="d-flex text-footer">
-        <p class="me-auto ms-5 text-center">Copyright All rights reserved</p>
+      <div class="d-flex text-footer text-center">
+        <p class="w text-center">Copyright All rights reserved</p>
       </div>
     </footer> 
     <script 

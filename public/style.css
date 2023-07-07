@@ -113,6 +113,7 @@ footer {
 .black-div {
     background-color: #000;
     padding: 60px;
+    max-width: 100% !important;
 }
 
 /* for the dividing line */

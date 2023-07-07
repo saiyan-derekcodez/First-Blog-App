@@ -22,7 +22,7 @@
         width: 90%;
     }
     h6.card-title.overlay-head {
-        margin-top: 50vw;
+        margin-top: 40vw;
     }
     h5.card-title.overlay-head {
         margin-top: 35vw;
@@ -74,6 +74,7 @@
     }
      .card.mb-3.col-lg-3.col-sm-12.col-md-2.card-width {
          margin-left: 50px;
+         
          /* margin-right: 20px; */
     }
 }
@@ -93,6 +94,7 @@
         margin-left: 13px;
     }
     .card.mb-3.col-lg-3.col-sm-12.col-md-2.card-width {
-        margin-left: 70px;
+        margin-right: 70px ;
+        width: 100% !important;
     }
 }
