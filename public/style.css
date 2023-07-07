@@ -1,10 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,500&display=swap');
+
 * {
     box-sizing: border-box !important;
     text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: large;
 }
 
 .me-auto {
-    margin-right: 42% !important;
+    margin-right: 32% !important;
+}
+
+.card.mb-3 {
+    padding: 0 !important;
+    margin-left: 15px;
 }
 
 nav.navbar {
@@ -58,7 +67,7 @@ a.text-muted, .flex-column {
 
 /* for card design */
 .overlay-head {
-    margin-top: 10vw;
+    margin-top: 14vw;
 }
 
 .text-footer {
@@ -66,10 +75,10 @@ a.text-muted, .flex-column {
 }
 
 .top-text {
-    width: 100px;
+    width: 200px;
     background-color: red;
     color: #fff;
-    padding: 5px;
+    padding: 5px 2px;
 }
 
 .error {
@@ -91,6 +100,7 @@ a.text-muted, .flex-column {
     padding: 5px;
 }
 
+/* for the footer */
 footer {
     background-color: #000000;
 }
@@ -99,6 +109,13 @@ footer {
     list-style-type: circle;
 }
 
+/* for the articles in black div */
+.black-div {
+    background-color: #000;
+    padding: 60px;
+}
+
+/* for the dividing line */
 .divider {
     background-color: white;
     width: 100%;
@@ -107,7 +124,7 @@ footer {
 /* div on home-page wallpaper */
 .adjust {
     position: absolute;
-    top: 60%;
+    top: 58%;
     left: 70px;
 }
 
