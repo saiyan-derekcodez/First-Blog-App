@@ -176,11 +176,14 @@
           <div class="col-md-6 col-lg-3 col-sm-12 mb-2 recent-card">
             <div class="card" style="width: 16rem;">
               <img style="height: 30vh;" src="<%= category.image %>" class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="/<%= category._id %>">
+                <div class="card-body">
+                  <p class="top-text"><%= category.category %></p>
+                  <p class="card-text"><%= category.title %></p>
+                </div>
+              </a>
               </div>
             </div>
-          </div>
         <% } %>
       </div>
     </div>

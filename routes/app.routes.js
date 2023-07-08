@@ -5,6 +5,8 @@ import bcrypt from "bcrypt";
 import cookieParser from "cookie-parser";
 import userModel from "./../models/users.model.js";
 import blogpostModel from "./../models/blogpost.model.js";
+import mongoose from "mongoose";
+const ObjectId = mongoose.Types.ObjectId;
 
 const router = Router();
 const storage = multer.diskStorage({
@@ -42,6 +44,18 @@ router.get("/register", (req, res) => {
 
 router.get("/login", (req, res) => {
   res.render("login");
+});
+
+router.get("/:blogId", async (req, res) => {
+  const { blogId } = req.params;
+
+  try {
+    const blogContent = await blogpostModel.findOne({
+      _id: new ObjectId(blogId),
+    });
+
+    res.render("blogcontent", { blogContent });
+  } catch (error) {}
 });
 
 router.get("/profile", async (req, res) => {
