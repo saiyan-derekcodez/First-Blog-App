@@ -17,26 +17,274 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
     />
     <script src="./script.js"></script>
+    <style>
+      * {
+        text-align: left !important;
+      }
+      .pad {
+        padding-left: 30px;
+      }
+      div.image > div.container-fluid > div.row > *{
+        padding: 0 !important;
+      }
+    </style>
   </head>
   <body>
-    <div class="container-fluid">
-      <div class="row">
-        <img
-          width="100%"
-          height="470vw"
-          src="<%= blogContent.image %>"
-          alt=""
-        />
-        <div class="col-md-8">
-          <h1><%= blogContent.title %></h1>
-          <h6><%= blogContent.content %></h6>
+    <nav class="navbar navbar-expand-lg bg-dark">
+      <div class="container-fluid text-light">
+        <a class="navbar-brand me-auto" href="#">Boggings</a>
+        <button
+          class="navbar-toggler "
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="/"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Features
+              </a>
+              <ul class="dropdown-menu">
+                <a href="/" class="footer-link"></a><li><a class="dropdown-item" href="/business">Business</a></li>
+                <a href="/" class="footer-link"></a><li><hr class="dropdown-divider"/></li>
+                <a href="/" class="footer-link"></a><li><a class="dropdown-item" href="/gaming">Gaming</a></li>
+                <a href="/" class="footer-link"></a><li><hr class="dropdown-divider"/></li>
+                <a href="/" class="footer-link"></a><li>
+                  <a class="dropdown-item" href="/technology">Technology</a>
+                </li>
+                <a href="/" class="footer-link"></a><li><hr class="dropdown-divider"/></li>
+                <a href="/" class="footer-link"></a><li><a class="dropdown-item" href="/science">Science</a></li>
+                <a href="/" class="footer-link"></a><li><hr class="dropdown-divider"/></li>
+                <a href="/" class="footer-link"></a><li><a class="dropdown-item" href="/shop">Shop</a></li>
+                <a href="/" class="footer-link"></a><li><hr class="dropdown-divider"/></li>
+                <a href="/" class="footer-link"></a><li><a class="dropdown-item" href="/health">Health</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+             <a class="nav-link" href="/newBlog">New Blog</a>
+            </li>
+            <li class="nav-item">
+             <a class="nav-link" href="/register">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+            <li class="nav-item">
+             <a class="nav-link" href="/profile">My profile</a>
+            </li>
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
         </div>
-        <div class="col-md-4">
-          <h1>REcent post</h1>
+      </div>
+    </nav>
+
+    <div class="image mt-5">
+      <div class="container-fluid ">
+        <div class="row">
+          <img
+              width="100%"
+              height="650vw"
+              src="<%= blogContent.image %>"
+              alt=""
+            />
         </div>
       </div>
     </div>
 
+    <div class="pad">
+      <div class="container-fluid mt-3">
+        <div class="row">
+          <div class="col-md-8 mt-5">
+            
+            <h6 class="top-text mt-3 text-center"><%= blogContent.category %></h6>
+            <h1><%= blogContent.title %></h1>
+            <h6 class="card-text mb-4"><small>
+                  <img class="profile-pic" src="https://images.unsplash.com/photo-1675186402592-05c87ae206a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDU5fHhIeFlUTUhMZ09jfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="">
+                  <%= blogContent.author %> 🕑 <%= blogContent.createdAt.toLocaleDateString() %>
+            </small></h6>
+            <p><%= blogContent.content %></p>
+  
+            <h4>RELATED ARTICLES</h4>
+            <div class="container-fluid">
+              <div class="row">
+                <% for (let i = blogCategory.length - 1; i >= 0; i--) { %>
+                <% relatedBlog = blogCategory[i]; %>
+                <% if (blogCategory.length - i > 6) break; %>
+              <div class="col-md-4  mt-0 mb-3">
+                <div class="card text-bg-dark">
+                  <img style="height: 50vh;" src="<%= relatedBlog.image %>" alt="...">
+                  <div class="card-img-overlay">
+                    <h5 class="card-title overlay-head" style="margin-top: 190px !important;"><%= relatedBlog.title %></h5>
+                    <h6 class="card-text"><small>
+                      <img class="profile-pic" src="https://images.unsplash.com/photo-1675186402592-05c87ae206a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDU5fHhIeFlUTUhMZ09jfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="">
+                      <%= relatedBlog.author %> 🕑 <%= relatedBlog.createdAt.toLocaleDateString() %>
+                    </small></h6>
+                  </div>
+                </div>
+              </div>
+                <% } %>
+              </div>
+            </div>
+  
+            <div class="register-divider"></div>
+  
+            <div class="comments">
+              <div class="container-fluid">
+                <div class="row">
+                  <h2>COMMENTS</h2>
+                  <% if (comments.length === 0) {%>
+                    <P>No comments, be the first to comment 😁</P>
+                  <% } %>
+                  <% for (let i = 0; i < comments.length; i++) { %>
+                    <% const comment = comments[i] %>
+                    <div class="col-md-3 text-center">
+                      <i class="bi bi-person-circle"></i>
+                      <!-- <img src="" alt=""> -->
+                    </div>
+                    <div class="col-md-9 pt-5">
+                      <h6><%= comment.fullname %></h6>
+                      <p><%= comment.createdAt.toLocaleDateString() %></p>
+                    </div>
+                    <div class="col-md-12">
+                      <%= comment.comment %>
+                    </div>
+                  <% } %>
+                </div>
+              </div>
+            </div>
+  
+            <form class="row g-3 needs-validation" action="/:blogId" method="post">
+               <div class="col-md-12 position-relative">
+                 <h4>LEAVE A REPLY</h4>
+                 <p>write a comment on this post</p>
+               </div>
+              <div class="col-md-12 position-relative">
+                <label for="comment" class="form-label"><h5></h5></label>
+                <textarea class="form-control" id="comment" name="comment" rows="5" placeholder="comment"></textarea>
+              </div>
+              <% if (typeof cookie !== "undefined") {%>
+              <div class="col-md-6 position-relative disappear">
+                <label for="email" class="form-label"></label>
+                <input
+                value="<%= user.email %>"
+                  type="text"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  placeholder="Email Address"
+                  required
+                />
+              </div>             
+              <div class="col-md-6 position-relative disappear">
+                <label for="fullname" class="form-label"></label>
+                <input
+                value="<%= user.name %>"
+                  type="text"
+                  class="form-control"
+                  id="fullname"
+                  name="fullname"
+                  placeholder="Fullname"
+                  required
+                />
+              </div>
+              <% } %>
+              <div class="col-md-6 position-relative disappear">
+                <label for="postId" class="form-label"></label>
+                <input
+                  value="<%= blogContent._id %>"
+                  type="text"
+                  class="form-control"
+                  id="postId"
+                  name="postId"
+                  required
+                />
+              </div>
+              
+              <button class="btn btn-dark text-center" type="submit">POST COMMENT</button>
+            </form>
+            <h4></h4>
+          </div>
+          <div class="col-md-4 mt-5">
+              <div>
+                <h4 class="fst-italic">Recent posts</h4>
+                  <ul class="list-unstyled">
+                    <% for (let d = AllCategory.length - 1; d >= 0; d--) { %>
+                    <%const category =  AllCategory[d];%>
+                    <% if (AllCategory.length - d > 3) {break;}; %>  
+                    <li>
+                      <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="#">
+                          <img class="bd-placeholder-img" width="100%" height="96" src="<%= category.image %>" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
+                          <div class="col-lg-8">
+                            <h6 class="mb-0"><%= category.title %></h6>
+                            <small class="text-body-secondary"><%= category.createdAt.toLocaleDateString() %></small>
+                          </div>
+                      </a>
+                    </li>
+                    <% } %>
+                  </ul>
+              </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class=" text-light pt-5">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-4">
+            <h4>ABOUT</h4>
+            <h6 class="text-footer">Mauris mattis auctor cursus. Phasellus tellus tellus, imperdiet ut imperdiet eu.</h6>
+          </div>
+
+          <div class="col-md-4">
+            <h4>RECENT POSTS</h4>
+            <ol class="post-list">
+              <a href="/" class="footer-link"><li>Jolayemi Just GOt mad and runs on the street</li></a>
+              <a href="/" class="footer-link"><li>Once again Stephen's heart has been broken</li></a>
+              <a href="/" class="footer-link"><li>Will Stephen Ever love in his life again</li></a>
+              <a href="/" class="footer-link"><li>Desire has finally admited she doesn't know how to spell</li></a>
+            </ol>
+          </div>
+
+          <div class="col-md-4">
+            <form action="">
+              <label for="email"><h4>NEWSLATER</h4></label><br>
+              <input type="email" class="form-control" name="email" id="email" placeholder="Your email address"><br>
+              <a href="" class="btn btn-primary form-control" type="button">Sign Up</a><br>
+            </form>
+          </div>
+        </div>
+      </div>
+      <hr class="divider "/>
+      <div class="d-flex text-footer text-center">
+        <p class="w text-center">Copyright All rights reserved</p>
+      </div>
+    </footer>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
