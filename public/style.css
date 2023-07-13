@@ -109,6 +109,31 @@ footer {
     list-style-type: circle;
 }
 
+/* comments section */
+.comments {
+    margin: 100px 0;
+}
+
+/* profile pic icon */
+.bi.bi-person-circle {
+    font-size: 150px;
+}
+
+/* for href in black color */
+.black-ref {
+    color: #000;
+}
+
+/* for href in white color */
+.white-ref {
+    color: #ffffff;
+}
+
+/* hover for both anchor tags */
+.white-ref:hover, .black-ref:hover {
+    color: blue;
+}
+
 /* for the articles in black div */
 .black-div {
     background-color: #000;
@@ -143,6 +168,14 @@ div.register-divider {
     background-color: #000000;
     width: 100%;
     height: inherit;
+}
+/* class to make display none */
+.disappear {
+    display: none;
+}
+
+a {
+    text-decoration: none;
 }
 
 .form-control, .input-group-text {
