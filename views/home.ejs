@@ -109,36 +109,19 @@
             <img style="height: 50vh;" src="<%= tech.image %>" alt="...">
             <div class="card-img-overlay">
               <h5 class="top-text"><%= tech.category %></h5>
-              <h5 class="card-title overlay-head"><%= tech.title %></h5>
-              <h6 class="card-text"><small>
-                <img class="profile-pic" src="https://images.unsplash.com/photo-1675186402592-05c87ae206a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDU5fHhIeFlUTUhMZ09jfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="">
-                <%= tech.author %> 🕑 <%= tech.createdAt.toLocaleDateString() %>
-              </small></h6>
+              <a href="/<%= tech._id %>" class="white-ref">
+                <h5 class="card-title overlay-head"><%= tech.title %></h5>
+                <h6 class="card-text"><small>
+                  <img class="profile-pic" src="https://images.unsplash.com/photo-1675186402592-05c87ae206a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDU5fHhIeFlUTUhMZ09jfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="">
+                  <%= tech.author %> 🕑 <%= tech.createdAt.toLocaleDateString() %>
+                </small></h6>
+              </a>
             </div>
           </div>
         </div>
         <% } %>
       </div>
     </div>
-
-
-<!-- <div class="container-fluid mb-5 mt-5">
-      <div class="row">
-        <h1>MORE FROM US</h1>
-        <% for (let i = 0; i < AllCategory.length; i++) { %>
-          <%const categories =  AllCategory[i];%>
-          <% if (i >= 2) break; %>
-          <div class="card mb-3 ms-4" style="width: 96% !important;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-  </div>
-</div>
-        <% } %>
-      </div>
-    </div> -->
 
     <div class="black-div">
       <div class="blackdiv-content">
@@ -153,11 +136,13 @@
               <img style="height: 50vh;" src="<%= wellness.image %>" alt="...">
               <div class="card-img-overlay">
                 <h5 class="top-text"><%= wellness.category %></h5>
-                <h6 class="card-title overlay-head"><%= wellness.title %></h6>
-                <p class="card-text"><small>
-                  <img class="profile-pic" src="https://images.unsplash.com/photo-1675186402592-05c87ae206a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDU5fHhIeFlUTUhMZ09jfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="">
-                  <%= wellness.author %> 🕑 <%= wellness.createdAt.toLocaleDateString() %>
-                </small></p>
+                <a href="/<%= wellness._id %>" class="white-ref">
+                  <h6 class="card-title overlay-head"><%= wellness.title %></h6>
+                  <p class="card-text"><small>
+                    <img class="profile-pic" src="https://images.unsplash.com/photo-1675186402592-05c87ae206a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDU5fHhIeFlUTUhMZ09jfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="">
+                    <%= wellness.author %> 🕑 <%= wellness.createdAt.toLocaleDateString() %>
+                  </small></p>
+                </a>
               </div>
             </div>
         </div>
@@ -176,7 +161,7 @@
           <div class="col-md-6 col-lg-3 col-sm-12 mb-2 recent-card">
             <div class="card" style="width: 16rem;">
               <img style="height: 30vh;" src="<%= category.image %>" class="card-img-top" alt="...">
-              <a href="/<%= category._id %>">
+              <a href="/<%= category._id %>" class="black-ref">
                 <div class="card-body">
                   <p class="top-text"><%= category.category %></p>
                   <p class="card-text"><%= category.title %></p>
