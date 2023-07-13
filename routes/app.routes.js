@@ -5,8 +5,9 @@ import bcrypt from "bcrypt";
 import cookieParser from "cookie-parser";
 import userModel from "./../models/users.model.js";
 import blogpostModel from "./../models/blogpost.model.js";
+import commentModel from "./../models/comments.model.js";
 import mongoose from "mongoose";
-const ObjectId = mongoose.Types.ObjectId;
+// const ObjectId = mongoose.Types.ObjectId;
 
 const router = Router();
 const storage = multer.diskStorage({
@@ -46,16 +47,24 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-router.get("/:blogId", async (req, res) => {
-  const { blogId } = req.params;
-
+router.get("/newBlog", async (req, res) => {
   try {
-    const blogContent = await blogpostModel.findOne({
-      _id: new ObjectId(blogId),
-    });
+    const cookie = req.cookies;
 
-    res.render("blogcontent", { blogContent });
-  } catch (error) {}
+    if (typeof cookie.id === "undefined") {
+      return res.render("login", { error: "Please log in to your account." });
+    }
+
+    const user = await userModel.findOne({ username: cookie.id });
+
+    if (!user) {
+      return res.render("register", { error: "Please create an account." });
+    }
+
+    res.render("new-blog", { author: user.name });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 });
 
 router.get("/profile", async (req, res) => {
@@ -63,47 +72,118 @@ router.get("/profile", async (req, res) => {
     const cookie = req.cookies;
 
     if (typeof cookie.id === "undefined") {
-      res.render("login", { error: "Please login your signed out" });
-      return;
+      return res.render("login", { error: "Please log in to your account." });
     }
 
     const profile = await userModel.findOne({ username: cookie.id });
 
-    if (profile === null) {
-      res.render("register", { error: "Please create an account" });
-      return;
+    if (!profile) {
+      return res.render("register", { error: "Please create an account." });
     }
 
-    // gets the authors name from the users database
     const author = await userModel.findOne({ name: profile.name });
 
-    // gets the authors blog from the blogs database
     const myBlogs = await blogpostModel.find({ author: author.name });
 
     res.render("profile", {
       myBlogs,
       name: profile.name,
     });
-  } catch (error) {}
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 });
 
-router.get("/Newblog", async (req, res) => {
+router.post("/newBlog", async (req, res) => {
   try {
-    const cookie = req.cookies;
+    const blogPost = req.body;
 
-    if (typeof cookie.id === "undefined") {
-      res.render("login", { error: "Please login your signed out" });
-      return;
-    }
+    await blogpostModel.create(blogPost);
 
-    const user = await userModel.findOne({ username: cookie.id });
+    res.redirect("/");
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+router.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+
+  const user = await userModel.findOne({ email: email });
+
+  try {
+    res.clearCookie("id");
 
     if (user === null) {
-      res.render("register", { error: "Please create an account" });
+      res.render("login", { error: "invalid credentials" });
+      return;
+    }
+    if (bcrypt.compareSync(password, user.password) === false) {
+      res.render("login", { error: "invalid credentials" });
       return;
     }
 
-    res.render("new-blog", { author: user.name });
+    res.cookie("id", user.username);
+
+    res.redirect("/");
+  } catch (error) {
+    res.render("login", { error: error.message });
+  }
+});
+
+router.get("/:blogId", async (req, res) => {
+  const { blogId } = req.params;
+
+  try {
+    const blogContent = await blogpostModel.findById(blogId);
+
+    if (!blogContent) {
+      // Handle the case where the blog post doesn't exist
+      return res.status(404).json({ message: "Blog post not found" });
+    }
+
+    const blogCategory = await blogpostModel.find({
+      category: blogContent.category,
+    });
+
+    const comments = await commentModel.find({ postId: blogId });
+
+    const cookie = req.cookies.id;
+
+    const user = await userModel.findOne({ username: cookie });
+
+    const AllCategory = await blogpostModel.find({});
+
+    res.render("blogcontent", {
+      blogContent,
+      blogCategory,
+      comments,
+      user,
+      AllCategory: AllCategory,
+      cookie,
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+router.post("/:blogId", async (req, res) => {
+  const { blogId } = req.params;
+  const commentInfo = req.body;
+  const cookie = req.cookies.id;
+
+  try {
+    if (typeof cookie === "undefined") {
+      res.render("login", {
+        error:
+          "cannot comment without signing in, Please sign in if you have an account",
+      });
+      return;
+    }
+
+    await commentModel.create(commentInfo);
+
+    res.redirect(req.get("referer"));
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -150,43 +230,6 @@ router.post("/register", async (req, res) => {
   }
 
   // res.render("register");
-});
-
-router.post("/Newblog", async (req, res) => {
-  try {
-    const blogPost = req.body;
-
-    await blogpostModel.create(blogPost);
-
-    res.redirect("/");
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
-router.post("/login", async (req, res) => {
-  const { email, password } = req.body;
-
-  const user = await userModel.findOne({ email: email });
-
-  try {
-    res.clearCookie("id");
-
-    if (user === null) {
-      res.render("login", { error: "invalid credentials" });
-      return;
-    }
-    if (bcrypt.compareSync(password, user.password) === false) {
-      res.render("login", { error: "invalid credentials" });
-      return;
-    }
-
-    res.cookie("id", user.username);
-
-    res.redirect("/");
-  } catch (error) {
-    res.render("login", { error: error.message });
-  }
 });
 
 export default router;
