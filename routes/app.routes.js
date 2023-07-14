@@ -7,7 +7,7 @@ import userModel from "./../models/users.model.js";
 import blogpostModel from "./../models/blogpost.model.js";
 import commentModel from "./../models/comments.model.js";
 import mongoose from "mongoose";
-// const ObjectId = mongoose.Types.ObjectId;
+const ObjectId = mongoose.Types.ObjectId;
 
 const router = Router();
 const storage = multer.diskStorage({
@@ -230,6 +230,18 @@ router.post("/register", async (req, res) => {
   }
 
   // res.render("register");
+});
+
+router.delete("/profile/:blogId", async (req, res) => {
+  const { blogId } = req.params;
+
+  try {
+    await blogpostModel.deleteOne({ _id: new ObjectId(blogId) });
+
+    res.status(200).json({ message: "Deleted successfully" });
+  } catch (error) {
+    res.json({ message: error.message }).status(500);
+  }
 });
 
 export default router;
