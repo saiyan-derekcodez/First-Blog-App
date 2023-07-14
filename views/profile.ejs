@@ -10,6 +10,7 @@
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" type="text/css" href="./responsive.css" />
   </head>
@@ -23,6 +24,12 @@
       margin-top: 10px;
       border-radius: 10px;
       padding: 20px;
+    }
+    .red {
+      color:#ff0000;
+    }
+    .green {
+      color: rgb(1, 247, 1);
     }
   </style>
   <body>
@@ -122,11 +129,105 @@
             <div class="card" style="width: 18rem;">
               <img style="height: 30vh;" src="<%= blog.image %>" class="card-img-top" alt="...">
               <div class="card-body">
-                <p class="card-text"></p>
+                <p class="top-text"><%= blog.category %></p>
+                <h5 class="card-text"><%= blog.title.toUpperCase() %></h5>
+                <div>
+                  <!-- Update button -->
+                  <a type="button" onclick="getIdToUpdate('<%= blog._id %>')" class="bi bi-pencil-square green" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Edit</a>
+                   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    &nbsp; &nbsp; &nbsp; &nbsp; <!-- for spacing of words-->
+
+                    <!-- Delete Button -->
+                  <a type="button" onclick="getIdOfBlog('<%= blog._id %>')" class="bi bi-trash3-fill red" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+                  Delete </a>
+                </div>
               </div>
             </div>
           </div>
           <% } %>
+
+                 <!-- Modal for Update Blog -->
+          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Update Blog</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form>
+                          <div class="col-md-12 position-relative">
+                            <label class="form-label"><h5>Blog Title</h5></label>
+                            <div class="input-group has-validation">
+                              <input
+                                type="text"
+                                class="form-control"
+                                name="updatedTitle"
+                                placeholder="special53"
+                              />
+                            </div>
+                          </div>
+                          <div class="col-md-12 position-relative">
+                            <label class="form-label"><h5>Blog Category</h5></label>
+                            <input
+                              type="text"
+                              class="form-control" 
+                              name="UpdatedCategory"
+                              placeholder="John Doe"
+                            />
+                          </div>
+                          <div class="col-md-12 position-relative">
+                            <label class="form-label"><h5>Add a picture</h5></label>
+                            <input class="form-control" type="text" name="UpdatedImage" >
+                          </div>
+                           <div class="col-md-12 position-relative">
+                            <label class="form-label"><h5>Content</h5></label>
+                            <textarea class="form-control" name="UpdatedContent" rows="4"></textarea>
+                          </div> 
+                          <div class="col-md-4 position-relative">
+                            <label for="author" class="form-label"><h5></h5></label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="author"
+                              name="author"
+                              placeholder="you2@gmail.com"
+                              value="<%= name %>"
+                              hidden
+                            />
+                          </div> 
+                        </form>
+                        
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Update</button>
+                      </div>
+                    </div>
+                  </div>
+          </div>
+
+          <!-- Modal for delete blog -->
+          <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete Window</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <input type="text" id="id" hidden>
+                    Are you sure you want to delete this blog?
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="DeleteBlog()">Delete</button>
+                  </div>
+                </div>
+            </div>
+          </div>
+
         </div>
       </div>
       </div>
@@ -134,7 +235,7 @@
     </div>
 
 
-    <!-- <footer class=" text-light">
+    <footer class=" text-light mt-5">
       <div class="container-fluid mb-5">
         <div class="row">
           <div class="col-md-4">
@@ -171,7 +272,9 @@
           <p class="me-3">Community</p> 
         </div>
       </div>
-    </footer> -->
+    </footer>
+
+    <script src="script.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
