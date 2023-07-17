@@ -33,25 +33,26 @@ async function getIdToUpdate(blogId) {
   // SO UPDATE THE BLOG UPDATE FIELDS
   document.querySelector("input[name='updatedTitle']").value = data.blog.title;
   document.querySelector("input[name='updatedImage']").value = data.blog.image;
-  document.querySelector("input[name='updatedImage']").value = data.blog.image;
+  document.querySelector("input[name='updatedCategory']").value =
+    data.blog.category;
   document.querySelector("input[name='blogId']").value = blogId;
   document.querySelector("textarea[name='updatedContent']").value =
     data.blog.content;
 }
 
-async function updateProduct() {
+async function updateBlog() {
   // RETRIEVE THE UPDATED INFO
   const update = {
-    name: document.querySelector("input[name='updatedTitle']']").value,
-    img: document.querySelector("input[name='updatedImage']").value,
-    price: document.querySelector("input[name='updatedCategory']").value,
-    quantity: document.querySelector("textarea[name='updatedContent']").value,
+    title: document.querySelector("input[name='updatedTitle']").value,
+    image: document.querySelector("input[name='updatedImage']").value,
+    category: document.querySelector("input[name='updatedCategory']").value,
+    content: document.querySelector("textarea[name='updatedContent']").value,
   };
 
   const blogId = document.querySelector("input[name='blogId']").value;
 
   // MAKE A REQUEST
-  const resp = await fetch(`${location.origin}/product/${blogId}`, {
+  const resp = await fetch(`${location.origin}/profile/${blogId}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "Application/json",

@@ -119,6 +119,12 @@ footer {
     font-size: 150px;
 }
 
+div.sticky{
+    position: -webkit-sticky;
+    position: sticky !important;
+    top: 0;
+}
+
 /* for href in black color */
 .black-ref {
     color: #000;
