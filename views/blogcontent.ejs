@@ -115,8 +115,8 @@
       </div>
     </div>
 
-    <div class="pad">
-      <div class="container-fluid mt-3">
+    <div class="pad" >
+      <div class="container-fluid mt-3"  >
         <div class="row">
           <div class="col-md-8 mt-5">
             
@@ -138,11 +138,13 @@
                 <div class="card text-bg-dark">
                   <img style="height: 50vh;" src="<%= relatedBlog.image %>" alt="...">
                   <div class="card-img-overlay">
-                    <h5 class="card-title overlay-head" style="margin-top: 190px !important;"><%= relatedBlog.title %></h5>
-                    <h6 class="card-text"><small>
-                      <img class="profile-pic" src="https://images.unsplash.com/photo-1675186402592-05c87ae206a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDU5fHhIeFlUTUhMZ09jfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="">
-                      <%= relatedBlog.author %> 🕑 <%= relatedBlog.createdAt.toLocaleDateString() %>
-                    </small></h6>
+                    <a href="/<%= relatedBlog._id %>" class="white-ref">                    
+                      <h5 class="card-title overlay-head" style="margin-top: 190px !important;"><%= relatedBlog.title %></h5>
+                      <h6 class="card-text"><small>
+                        <img class="profile-pic" src="https://images.unsplash.com/photo-1675186402592-05c87ae206a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDU5fHhIeFlUTUhMZ09jfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="">
+                        <%= relatedBlog.author %> 🕑 <%= relatedBlog.createdAt.toLocaleDateString() %>
+                      </small></h6>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -228,25 +230,31 @@
             </form>
             <h4></h4>
           </div>
-          <div class="col-md-4 mt-5">
+          <div class="col-md-4 mt-5"  style="overflow: visible;">
+            <div class="sticky">
               <div>
-                <h4 class="fst-italic">Recent posts</h4>
-                  <ul class="list-unstyled">
+                <h4 class="fst-italic " >Recent posts</h4>
+                  <ul class="list-unstyled ">
                     <% for (let d = AllCategory.length - 1; d >= 0; d--) { %>
                     <%const category =  AllCategory[d];%>
                     <% if (AllCategory.length - d > 3) {break;}; %>  
                     <li>
-                      <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="#">
-                          <img class="bd-placeholder-img" width="100%" height="96" src="<%= category.image %>" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
-                          <div class="col-lg-8">
-                            <h6 class="mb-0"><%= category.title %></h6>
-                            <small class="text-body-secondary"><%= category.createdAt.toLocaleDateString() %></small>
+                      <a class="d-flex flex-column flex-lg-row gap-3 black-ref align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="/<%= category._id %>">
+                          <img class="bd-placeholder-img" width="50%" height="96" src="<%= category.image %>" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
+                          <div class="col-lg-8">           
+                              <h6 class="mb-0"><%= category.title %></h6>
+                              <small class="text-body-secondary"><%= category.createdAt.toLocaleDateString() %></small>
                           </div>
                       </a>
                     </li>
                     <% } %>
                   </ul>
               </div>
+              <div>
+                <h2 class="btn btn-primary">ADVERTISEMENT</h2>
+                <video width="100%" autoplay muted src="https://v3.cdnpk.net/videvo_files/video/premium/partners0133/large_watermarked/BB_f1db64fb-f7c8-4575-ae04-f675104330af_FPpreview.mp4"></video>
+              </div>
+            </div>
 
           </div>
         </div>
