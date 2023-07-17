@@ -129,8 +129,10 @@
             <div class="card" style="width: 18rem;">
               <img style="height: 30vh;" src="<%= blog.image %>" class="card-img-top" alt="...">
               <div class="card-body">
-                <p class="top-text"><%= blog.category %></p>
-                <h5 class="card-text"><%= blog.title.toUpperCase() %></h5>
+                <a href="/<%= blog._id %>" class="black-ref">
+                  <p class="top-text"><%= blog.category %></p>
+                  <h5 class="card-text"><%= blog.title.toUpperCase() %></h5>
+                </a>
                 <div>
                   <!-- Update button -->
                   <a type="button" onclick="getIdToUpdate('<%= blog._id %>')" class="bi bi-pencil-square green" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Edit</a>
@@ -207,7 +209,7 @@
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Update</button>
+                        <button type="button" class="btn btn-primary" onclick="updateBlog()">Update</button>
                       </div>
                     </div>
                   </div>

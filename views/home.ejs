@@ -101,9 +101,9 @@
 
     <div class="container-fluid mb-5 mt-5">
       <div class="row">
-        <% for (let i = 0; i < techs.length; i++) { %>
+        <% for (let i = techs.length - 1; i >= 0 ; i--) { %>
           <%const tech =  techs[i];%>
-          <% if (i >= 3) break; %>
+          <% if (techs.length - i > 3) break; %>
         <div class="col-md-4  mt-0 mb-3">
           <div class="card text-bg-dark">
             <img style="height: 50vh;" src="<%= tech.image %>" alt="...">

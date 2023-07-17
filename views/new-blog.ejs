@@ -90,7 +90,7 @@
       <h1>Oh! Hi there again 🙋‍♂️,Let's write about something</h1>
       <hr class="register-divider">
 
-      <form class="row g-3 needs-validation" action="/newBlog" method="POST">
+      <form class="row g-3 needs-validation" action="/newBlog" method="POST" enctype="multipart/form-data">
   <div class="col-md-6 position-relative">
     <label for="title" class="form-label"><h5>Blog Title</h5></label>
     <div class="input-group has-validation">
@@ -117,7 +117,8 @@
   </div>
   <div class="col-md-12 position-relative">
     <label for="image" class="form-label"><h5>Add a picture</h5></label>
-    <input class="form-control" type="text" id="image" name="image" >
+    <!-- <input class="form-control" type="text" id="image" name="image" > -->
+    <input class="form-control" type="file" id="image" name="image" multiple>
   </div>
   <div class="col-md-12 position-relative">
     <label for="content" class="form-label"><h5>Content</h5></label>
@@ -138,7 +139,7 @@
   <div class="col-12">
     <button class="btn btn-primary" type="submit">Post Blog</button>
   </div>
-</form>
+      </form>
 
     </div>
 
