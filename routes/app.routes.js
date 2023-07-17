@@ -15,11 +15,10 @@ const storage = multer.diskStorage({
     cb(null, "public/images");
   },
   filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname));
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    cb(null, uniqueSuffix + path.extname(file.originalname));
   },
 });
-
-const userFiles = [];
 
 const upload = multer({ storage: storage });
 
@@ -94,11 +93,18 @@ router.get("/profile", async (req, res) => {
   }
 });
 
-router.post("/newBlog", async (req, res) => {
+router.post("/newBlog", upload.single("image"), async (req, res) => {
   try {
-    const blogPost = req.body;
+    const { title, category, content, author } = req.body;
+    const image = req.file ? req.file.filename : "";
 
-    await blogpostModel.create(blogPost);
+    await blogpostModel.create({
+      title,
+      category,
+      content,
+      author,
+      image: `./images/${image}`,
+    });
 
     res.redirect("/");
   } catch (error) {
@@ -189,6 +195,16 @@ router.post("/:blogId", async (req, res) => {
   }
 });
 
+router.get("/profile/:blogId", async (req, res) => {
+  const { blogId } = req.params;
+  try {
+    const blog = await blogpostModel.findOne({ _id: blogId });
+    res.json({ blog: blog });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 router.get("/business", (req, res) => {
   res.render("business");
 });
@@ -241,6 +257,23 @@ router.delete("/profile/:blogId", async (req, res) => {
     res.status(200).json({ message: "Deleted successfully" });
   } catch (error) {
     res.json({ message: error.message }).status(500);
+  }
+});
+
+router.patch("/profile/:blogId", async (req, res) => {
+  const { blogId } = req.params;
+  const update = req.body;
+
+  try {
+    // MAKE THE UPDATE
+    await blogpostModel.updateOne(
+      { _id: new ObjectId(blogId) },
+      { $set: { ...update } }
+    );
+
+    res.status(200).json({ message: "Update successful" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 });
 
