@@ -116,7 +116,7 @@
     />
   </div>
   <div class="col-md-12 position-relative">
-    <label for="image" class="form-label"><h5>Add a picture</h5></label>
+    <label for="image" class="form-label" id="imageLabel"><h5>Add a picture</h5></label>
     <!-- <input class="form-control" type="text" id="image" name="image" > -->
     <input class="form-control" type="file" id="image" name="image" multiple>
   </div>
@@ -148,5 +148,18 @@
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
       crossorigin="anonymous"
     ></script>
+    <script>
+      const fileInput1 = document.getElementById("image");
+      const fileInputLabel1 = document.getElementById("imageLabel");
+
+      fileInput1.addEventListener("change", async () => {
+        if (fileInput1.files.length > 0) {
+          const fileName = await fileInput.files[0].name;
+          fileInputLabel1.textContent = fileName;
+        } else {
+          fileInputLabel1.textContent = "Choose a file...";
+        }
+      });
+    </script>
   </body>
 </html>

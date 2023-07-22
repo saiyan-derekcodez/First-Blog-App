@@ -158,7 +158,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
-                        <form>
+                        <form enctype="multipart/form-data">
                           <div class="col-md-12 position-relative">
                             <label class="form-label"><h5>Blog Title</h5></label>
                             <div class="input-group has-validation">
@@ -176,13 +176,12 @@
                               type="text"
                               class="form-control" 
                               name="updatedCategory"
-                              placeholder="John Doe"
                             />
                           </div>
-                          <div class="col-md-12 position-relative">
-                            <label class="form-label"><h5>Add a picture</h5></label>
-                            <input class="form-control" type="text" name="updatedImage" >
-                          </div>
+                          <!-- <div class="col-md-12 position-relative">
+                            <label class="form-label" id="imageLabel" for="image"><h5>Add a picture</h5></label>
+                            <input class="form-control" type="file" id="image" name="updatedImage" multiple>
+                          </div> -->
                            <div class="col-md-12 position-relative">
                             <label class="form-label"><h5>Content</h5></label>
                             <textarea class="form-control" name="updatedContent" rows="4"></textarea>

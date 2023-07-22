@@ -7,12 +7,19 @@ import userModel from "./../models/users.model.js";
 import blogpostModel from "./../models/blogpost.model.js";
 import commentModel from "./../models/comments.model.js";
 import mongoose from "mongoose";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
+import { Console } from "console";
 const ObjectId = mongoose.Types.ObjectId;
 
 const router = Router();
+// const router = express.Router();
+
+const __dirname = "./";
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "public/images");
+    cb(null, path.join(__dirname, "images")); // Use __dirname to get the current directory
   },
   filename: (req, file, cb) => {
     const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
@@ -66,6 +73,30 @@ router.get("/newBlog", async (req, res) => {
   }
 });
 
+router.get("/business", (req, res) => {
+  res.render("business");
+});
+
+router.get("/gaming", (req, res) => {
+  res.render("gaming");
+});
+
+router.get("/science", (req, res) => {
+  res.render("science");
+});
+
+router.get("/health", (req, res) => {
+  res.render("health");
+});
+
+router.get("/shop", (req, res) => {
+  res.render("shop");
+});
+
+router.get("/technology", (req, res) => {
+  res.render("technology");
+});
+
 router.get("/profile", async (req, res) => {
   try {
     const cookie = req.cookies;
@@ -96,14 +127,15 @@ router.get("/profile", async (req, res) => {
 router.post("/newBlog", upload.single("image"), async (req, res) => {
   try {
     const { title, category, content, author } = req.body;
-    const image = req.file ? req.file.filename : "";
-
+    const filePath = req.file
+      ? path.join(__dirname, "images", req.file.filename)
+      : "";
     await blogpostModel.create({
       title,
       category,
       content,
       author,
-      image: `./images/${image}`,
+      image: filePath,
     });
 
     res.redirect("/");
@@ -205,30 +237,18 @@ router.get("/profile/:blogId", async (req, res) => {
   }
 });
 
-router.get("/business", (req, res) => {
-  res.render("business");
-});
+router.get("/images/:file", (req, res) => {
+  const { file } = req.params;
 
-router.get("/gaming", (req, res) => {
-  res.render("gaming");
+  try {
+    // Send the image file
+    const blog = path.join(__dirname, "images", file);
+    console.log(blog);
+    res.json({ blog });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 });
-
-router.get("/science", (req, res) => {
-  res.render("science");
-});
-
-router.get("/health", (req, res) => {
-  res.render("health");
-});
-
-router.get("/shop", (req, res) => {
-  res.render("shop");
-});
-
-router.get("/technology", (req, res) => {
-  res.render("technology");
-});
-
 router.post("/register", async (req, res) => {
   const userInfo = req.body;
 
