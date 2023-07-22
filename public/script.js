@@ -32,7 +32,6 @@ async function getIdToUpdate(blogId) {
   // IF IT GETS HERE THE INFORMATION WAS FOUND
   // SO UPDATE THE BLOG UPDATE FIELDS
   document.querySelector("input[name='updatedTitle']").value = data.blog.title;
-  document.querySelector("input[name='updatedImage']").value = data.blog.image;
   document.querySelector("input[name='updatedCategory']").value =
     data.blog.category;
   document.querySelector("input[name='blogId']").value = blogId;
@@ -44,12 +43,18 @@ async function updateBlog() {
   // RETRIEVE THE UPDATED INFO
   const update = {
     title: document.querySelector("input[name='updatedTitle']").value,
-    image: document.querySelector("input[name='updatedImage']").value,
     category: document.querySelector("input[name='updatedCategory']").value,
     content: document.querySelector("textarea[name='updatedContent']").value,
   };
 
   const blogId = document.querySelector("input[name='blogId']").value;
+
+  // if (fileInput.files.length > 0) {
+  //   update.image = fileInput.files[0].name;
+  // } else {
+  //   console.log("somthing wrong");
+  //   return;
+  // }
 
   // MAKE A REQUEST
   const resp = await fetch(`${location.origin}/profile/${blogId}`, {
