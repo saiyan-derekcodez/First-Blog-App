@@ -21,6 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.static("./public"));
+app.use("/images", express.static(path.join(__dirname, "images")));
 
 const DB_URI = process.env.DB_URI;
 
