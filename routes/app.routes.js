@@ -73,28 +73,52 @@ router.get("/newBlog", async (req, res) => {
   }
 });
 
-router.get("/business", (req, res) => {
-  res.render("business");
+router.get("/business", async (req, res) => {
+  try {
+    const business = await blogpostModel.find({ category: "Business" });
+
+    res.render("business", { business });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 });
 
 router.get("/gaming", (req, res) => {
   res.render("gaming");
 });
 
-router.get("/science", (req, res) => {
-  res.render("science");
+router.get("/science", async (req, res) => {
+  try {
+    const science = await blogpostModel.find({ category: "Science" });
+
+    res.render("science", { science });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 });
 
-router.get("/health", (req, res) => {
-  res.render("health");
+router.get("/health", async (req, res) => {
+  try {
+    const wellness = await blogpostModel.find({ category: "Wellness" });
+
+    res.render("wellness", { wellness });
+  } catch (error) {
+    res.status(500).json({ error: message.error });
+  }
 });
 
 router.get("/shop", (req, res) => {
   res.render("shop");
 });
 
-router.get("/technology", (req, res) => {
-  res.render("technology");
+router.get("/technology", async (req, res) => {
+  try {
+    const technology = await blogpostModel.find({ category: "Technology" });
+
+    res.render("technology", { technology });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 });
 
 router.get("/profile", async (req, res) => {

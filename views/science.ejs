@@ -56,7 +56,7 @@
                 <a href="/" class="footer-link"></a><li><hr class="dropdown-divider"/></li>
                 <a href="/" class="footer-link"></a><li><a class="dropdown-item" href="/shop">Shop</a></li>
                 <a href="/" class="footer-link"></a><li><hr class="dropdown-divider"/></li>
-                <a href="/" class="footer-link"></a><li><a class="dropdown-item" href="/health">Health</a></li>
+                <a href="/" class="footer-link"></a><li><a class="dropdown-item" href="/health">Wellness</a></li>
               </ul>
             </li>
             <li class="nav-item">
@@ -86,6 +86,37 @@
       </div>
     </nav>
 
+    <div style="height: 690px;">
+      <div class="front-pic-div">
+        <div class="color ms-3"><h2>Science</h2></div>
+        <img width="100%" height="600px" src="https://img.freepik.com/free-vector/hand-drawn-science-education-background_23-2148499325.jpg?size=626&ext=jpg&uid=R104565977&ga=GA1.2.1157935438.1685207940&semt=ais" alt="">
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="container-fluid">
+           <div class="row">
+          <% for (let s = science.length - 1; s >= 0; s--) { %>
+            <% const currentScience = science[s]; %>
+            <div class="col-md-6 col-lg-3 col-sm-12 mb-2 recent-card">
+              <div class="card mb-3 mt-2" style="width: 16rem;height: 21rem;">
+                <img style="height: 30vh;" src="<%= currentScience.image %>" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <a href="/<%= currentScience._id %>" class="black-ref">
+                    <p class="top-text"><%= currentScience.category %></p>
+                    <h5 class="card-text"><%= currentScience.title.toUpperCase() %></h5>
+                  </a>
+                </div>
+              </div>
+            </div>
+          <% } %>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <footer class=" text-light">
       <div class="container-fluid mb-5">

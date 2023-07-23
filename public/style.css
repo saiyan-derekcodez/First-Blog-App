@@ -56,6 +56,23 @@ a.text-muted, .flex-column {
     color: #e0e0e0;
 }
 
+.color {
+    border: 1px solid #fff;
+    background-color: #ffffff;
+    width: 250px;
+    color: #000000;
+    position: relative;
+    top: 580px;
+}
+
+.front-pic-div {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
 .first-paper {
     background-image: url('https://images.unsplash.com/photo-1675186402592-05c87ae206a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDU5fHhIeFlUTUhMZ09jfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60');
     background-size: cover;

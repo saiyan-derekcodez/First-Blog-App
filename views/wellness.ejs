@@ -56,7 +56,7 @@
                 <a href="/" class="footer-link"></a><li><hr class="dropdown-divider"/></li>
                 <a href="/" class="footer-link"></a><li><a class="dropdown-item" href="/shop">Shop</a></li>
                 <a href="/" class="footer-link"></a><li><hr class="dropdown-divider"/></li>
-                <a href="/" class="footer-link"></a><li><a class="dropdown-item" href="/health">Health</a></li>
+                <a href="/" class="footer-link"></a><li><a class="dropdown-item" href="/health">Wellness</a></li>
               </ul>
             </li>
             <li class="nav-item">
@@ -85,6 +85,39 @@
         </div>
       </div>
     </nav>
+
+    <div style="height: 690px;">
+      <div class="front-pic-div">
+        <div class="color ms-3"><h2>Health</h2></div>
+        <img width="100%" height="600px" src="https://img.freepik.com/free-psd/world-health-day-social-media-banner-template_47987-15376.jpg?size=626&ext=jpg&uid=R104565977&ga=GA1.1.1157935438.1685207940&semt=ais" alt="">
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="container-fluid">
+           <div class="row">
+          <% for (let w = wellness.length - 1; w >= 0; w--) { %>
+            <% const currentWellness = wellness[w]; %>
+            <div class="col-md-6 col-lg-3 col-sm-12 mb-2 recent-card">
+              <div class="card mb-3 mt-2" style="width: 16rem;height: 21rem;">
+                <img style="height: 30vh;" src="<%= currentWellness.image %>" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <a href="/<%= currentWellness._id %>" class="black-ref">
+                    <p class="top-text"><%= currentWellness.category %></p>
+                    <h5 class="card-text"><%= currentWellness.title.toUpperCase() %></h5>
+                  </a>
+                </div>
+              </div>
+            </div>
+          <% } %>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
 
     <footer class=" text-light">
