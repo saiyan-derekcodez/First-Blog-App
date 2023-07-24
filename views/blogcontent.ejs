@@ -85,10 +85,13 @@
             <li class="nav-item">
              <a class="nav-link" href="/profile">My profile</a>
             </li>
-          <form class="d-flex" role="search">
+          <form class="d-flex" action="/search" role="search" method="get">
+             <label for="search" class="form-label"></label>
             <input
               class="form-control me-2"
               type="search"
+              id="search"
+              name="q"
               placeholder="Search"
               aria-label="Search"
             />
@@ -278,10 +281,10 @@
           </div>
 
           <div class="col-md-4">
-            <form action="">
+            <form>
               <label for="email"><h4>NEWSLATER</h4></label><br>
               <input type="email" class="form-control" name="email" id="email" placeholder="Your email address"><br>
-              <a href="" class="btn btn-primary form-control" type="button">Sign Up</a><br>
+              <a href="" class="btn btn-primary form-control text-center" type="button">Sign Up</a><br>
             </form>
           </div>
         </div>

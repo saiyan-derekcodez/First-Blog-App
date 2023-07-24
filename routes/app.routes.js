@@ -113,8 +113,20 @@ router.get("/health", async (req, res) => {
   }
 });
 
-router.get("/shop", (req, res) => {
-  res.render("shop");
+router.get("/search", async (req, res) => {
+  const searchTerm = decodeURIComponent(req.query.q);
+  if (!searchTerm || searchTerm.trim() === "") {
+    return res.status(400).json({ error: "Search term cannot be empty" });
+  }
+  try {
+    const foundBlogs = await blogpostModel.find({
+      $text: { $search: searchTerm },
+    });
+    res.render("search", { foundBlogs });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Internal server error" });
+  }
 });
 
 router.get("/technology", async (req, res) => {
@@ -147,6 +159,7 @@ router.get("/profile", async (req, res) => {
 
     res.render("profile", {
       myBlogs,
+      profile: profile,
       name: profile.name,
     });
   } catch (error) {

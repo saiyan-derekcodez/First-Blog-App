@@ -23,7 +23,7 @@
       background-color: white;
       margin-top: 10px;
       border-radius: 10px;
-      padding: 20px;
+     
     }
     .red {
       color:#ff0000;
@@ -31,9 +31,51 @@
     .green {
       color: rgb(1, 247, 1);
     }
+    .container-fluid.profile-display {
+      padding-left: 0;
+    }
+    .text-left {
+      text-align: left !important;
+    }
+    @media (max-width: 768px) {
+    .col-md-3 {
+        width: 50% !important;
+    }
+    .col-lg-2 {
+        width: 50% !important;
+    }
+        .Contain-content {
+            margin: 0;
+        }
+}
+    @media (max-width: 820px) {
+    .col-md-3 {
+        width: 50% !important;
+    }}
+    @media (max-width: 912px) {
+      .col-md-3 {
+        width: 50% !important;
+      }
+      @media (max-width: 414px) {
+    .col-md-3 {
+        width: 100% !important;
+    }
+  }
+      @media (max-width: 390px) {
+        .col-md-3 {
+          width: 100% !important;
+        }
+      }
+      @media (max-width: 375px) {
+      .col-md-3 {
+          width: 100% !important;
+      }
+    }
+  }
+
   </style>
   <body>
-     <nav class="navbar navbar-expand-lg bg-dark">
+    <nav class="navbar navbar-expand-lg bg-dark">
       <div class="container-fluid text-light">
         <a class="navbar-brand me-auto" href="#">Boggings</a>
         <button
@@ -88,10 +130,13 @@
             <li class="nav-item">
              <a class="nav-link" href="/profile">My profile</a>
             </li>
-          <form class="d-flex" role="search">
+          <form class="d-flex" action="/search" role="search" method="get">
+             <label for="search" class="form-label"></label>
             <input
               class="form-control me-2"
               type="search"
+              id="search"
+              name="q"
               placeholder="Search"
               aria-label="Search"
             />
@@ -104,27 +149,29 @@
     </nav><br><br>
     <div class="Contain-content">
 
-      <div class="profile-display">
-        
-    <div class="profile-content">
-      <div class="profile-picture">
-        <!-- Profile picture image -->
-      </div>
-      <h1 class="profile-name"><%= name %></h1>
-    </div>
-      </div>
-      <div class="container-fluid profile-grid">
-        <div class="row">
-          <div class="col-md-12">
-            <div></div>
+        <div class="container-fluid profile-display">
+          <div class="row">
+            <div class="col-md-4">
+              <img width="100%" height="500vh" src="https://img.freepik.com/premium-photo/blog-concept-with-wooden-worktable-supplies_44344-887.jpg?size=626&ext=jpg&uid=R104565977&ga=GA1.1.1157935438.1685207940&semt=ais" alt="">
+            </div>
+            <div class="col-md-8 pt-5 mt-2">
+              <u><h1 class="text-underline mb-5">My Profile</h1></u>
+              <h5 class="text-left">Name: <%= profile.name %></h5>
+              <h5 class="text-left">Username: <%= profile.username %></h5>
+              <h5 class="text-left">Email: <%= profile.email %></h5>
+            </div>
           </div>
-          <div class="col-md-12">
+        </div>
+    
+      <div class="container-fluid profile-grid">
+        <div class="row ps-2">
+          <div class="col-md-12 ">
             <div><h1>My Blogs</h1></div>
           </div>
           <% for (let d = myBlogs.length - 1; d >= 0; d--) { %>
           <%const blog =  myBlogs[d];%>
-            <div class="col-md-3 mb-2">
-            <div class="card" style="width: 18rem;">
+            <div class="col-lg-5 col-md-3 col-xl-3 profile mb-2">
+            <div class="card" style="width: 16rem;">
               <img style="height: 30vh;" src="<%= blog.image %>" class="card-img-top" alt="...">
               <div class="card-body">
                 <a href="/<%= blog._id %>" class="black-ref">
@@ -136,7 +183,7 @@
                   <a type="button" onclick="getIdToUpdate('<%= blog._id %>')" class="bi bi-pencil-square green" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Edit</a>
                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                    &nbsp; &nbsp; &nbsp; &nbsp; <!-- for spacing of words-->
+                     <!-- for spacing of words-->
 
                     <!-- Delete Button -->
                   <a type="button" onclick="getIdOfBlog('<%= blog._id %>')" class="bi bi-trash3-fill red" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
@@ -268,13 +315,7 @@
       </div>
       <hr class="divider "/>
       <div class="d-flex text-footer">
-        <p class="me-auto ms-5 d-flex">Copyright All rights reserved</p>
-        <div class="ms-5 d-flex">
-          <p class="me-3">About Us</p>
-          <p class="me-3">Private policy</p>
-          <p class="me-3">Forums</p>
-          <p class="me-3">Community</p> 
-        </div>
+        <p class="w text-center">Copyright All rights reserved</p>
       </div>
     </footer>
 

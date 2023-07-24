@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="./responsive.css" />
   </head>
   <body>
-     <nav class="navbar navbar-expand-lg bg-dark">
+    <nav class="navbar navbar-expand-lg bg-dark">
       <div class="container-fluid text-light">
         <a class="navbar-brand me-auto" href="#">Boggings</a>
         <button
@@ -69,10 +69,13 @@
             <li class="nav-item">
              <a class="nav-link" href="/profile">My profile</a>
             </li>
-          <form class="d-flex" role="search">
+          <form class="d-flex" action="/search" role="search" method="get">
+             <label for="search" class="form-label"></label>
             <input
               class="form-control me-2"
               type="search"
+              id="search"
+              name="q"
               placeholder="Search"
               aria-label="Search"
             />

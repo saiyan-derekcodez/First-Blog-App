@@ -74,10 +74,13 @@
             <li class="nav-item">
              <a class="nav-link" href="/profile">My profile</a>
             </li>
-          <form class="d-flex" role="search">
+          <form class="d-flex" action="/search" role="search" method="get">
+             <label for="search" class="form-label"></label>
             <input
               class="form-control me-2"
               type="search"
+              id="search"
+              name="q"
               placeholder="Search"
               aria-label="Search"
             />
@@ -98,7 +101,7 @@
     </div>
 
     <div class="container-fluid mb-5 mt-5">
-      <div class="row">
+      <div class="row ps-2">
         <% for (let i = techs.length - 1; i >= 0 ; i--) { %>
           <%const tech =  techs[i];%>
           <% if (techs.length - i > 3) break; %>
@@ -125,7 +128,7 @@
       <div class="blackdiv-content">
         <h1 style="color: #fff;" class="mb-5">ARTICLES YOU MAY KNOW</h1>
         <div class="container-fluid">
-          <div class="row">
+          <div class="row ps-2">
           <% for (let i = wellnesss.length - 1; i >= 0 ; i--) { %>
           <%const wellness =  wellnesss[i];%>
           <% if (wellnesss.length - i > 3) {break}; %>
@@ -151,7 +154,7 @@
     </div>
 
     <div class="container-fluid mb-5 mt-5">
-      <div class="row">
+      <div class="row ps-2">
         <h1>RECENT POSTS</h1>
         <% for (let d = AllCategory.length - 1; d >= 0; d--) { %>
           <%const category =  AllCategory[d];%>

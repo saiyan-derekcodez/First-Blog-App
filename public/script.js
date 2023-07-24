@@ -73,3 +73,19 @@ async function updateBlog() {
     location.reload();
   }
 }
+
+const searchTerm = document.getElementById("search").value; // Replace this with the actual search term from the user input
+if (searchTerm && searchTerm.trim() !== "") {
+  // Make the API call to the server
+  fetch(`${location.origin}/search?q=${encodeURIComponent(searchTerm)}`)
+    .then((response) => response.json())
+    .then((data) => {
+      // Process the search results returned from the server
+      console.log(data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+} else {
+  console.log("Please enter a valid search term.");
+}

@@ -69,10 +69,13 @@
             <li class="nav-item">
              <a class="nav-link" href="/profile">My profile</a>
             </li>
-          <form class="d-flex" role="search">
+          <form class="d-flex" action="/search" role="search" method="get">
+             <label for="search" class="form-label"></label>
             <input
               class="form-control me-2"
               type="search"
+              id="search"
+              name="q"
               placeholder="Search"
               aria-label="Search"
             />
@@ -145,13 +148,7 @@
       </div>
       <hr class="divider "/>
       <div class="d-flex text-footer">
-        <p class="me-auto ms-5 d-flex">Copyright All rights reserved</p>
-        <div class="ms-5 d-flex">
-          <p class="me-3">About Us</p>
-          <p class="me-3">Private policy</p>
-          <p class="me-3">Forums</p>
-          <p class="me-3">Community</p> 
-        </div>
+        <p class="w text-center">Copyright All rights reserved</p>
       </div>
     </footer>
     <script
