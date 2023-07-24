@@ -54,8 +54,6 @@
                 <a href="/" class="footer-link"></a><li><hr class="dropdown-divider"/></li>
                 <a href="/" class="footer-link"></a><li><a class="dropdown-item" href="/science">Science</a></li>
                 <a href="/" class="footer-link"></a><li><hr class="dropdown-divider"/></li>
-                <a href="/" class="footer-link"></a><li><a class="dropdown-item" href="/shop">Shop</a></li>
-                <a href="/" class="footer-link"></a><li><hr class="dropdown-divider"/></li>
                 <a href="/" class="footer-link"></a><li><a class="dropdown-item" href="/health">Wellness</a></li>
               </ul>
             </li>
@@ -101,7 +99,7 @@
           <% for (let s = science.length - 1; s >= 0; s--) { %>
             <% const currentScience = science[s]; %>
             <div class="col-md-6 col-lg-3 col-sm-12 mb-2 recent-card">
-              <div class="card mb-3 mt-2" style="width: 16rem;height: 21rem;">
+              <div class="card mb-3 mt-2" style="width: 16rem;height: 23rem;">
                 <img style="height: 30vh;" src="<%= currentScience.image %>" class="card-img-top" alt="...">
                 <div class="card-body">
                   <a href="/<%= currentScience._id %>" class="black-ref">

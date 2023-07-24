@@ -54,8 +54,6 @@
                 <a href="/" class="footer-link"></a><li><hr class="dropdown-divider"/></li>
                 <a href="/" class="footer-link"></a><li><a class="dropdown-item" href="/science">Science</a></li>
                 <a href="/" class="footer-link"></a><li><hr class="dropdown-divider"/></li>
-                <a href="/" class="footer-link"></a><li><a class="dropdown-item" href="/shop">Shop</a></li>
-                <a href="/" class="footer-link"></a><li><hr class="dropdown-divider"/></li>
                 <a href="/" class="footer-link"></a><li><a class="dropdown-item" href="/health">Wellness</a></li>
               </ul>
             </li>
@@ -100,9 +98,9 @@
            <div class="row">
           <% for (let t = technology.length - 1; t >= 0; t--) { %>
             <% const tech = technology[t]; %>
-            <% if (technology.length - t > 3) break; %>
+            
             <div class="col-md-6 col-lg-3 col-sm-12 mb-2 recent-card">
-              <div class="card mb-3 mt-2" style="width: 16rem;height: 21rem;">
+              <div class="card mb-3 mt-2" style="width: 16rem;height: 24rem;">
                 <img style="height: 30vh;" src="<%= tech.image %>" class="card-img-top" alt="...">
                 <div class="card-body">
                   <a href="/<%= tech._id %>" class="black-ref">

@@ -83,8 +83,14 @@ router.get("/business", async (req, res) => {
   }
 });
 
-router.get("/gaming", (req, res) => {
-  res.render("gaming");
+router.get("/gaming", async (req, res) => {
+  try {
+    const gaming = await blogpostModel.find({ category: "Gaming" });
+
+    res.render("gaming", { gaming });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 });
 
 router.get("/science", async (req, res) => {
