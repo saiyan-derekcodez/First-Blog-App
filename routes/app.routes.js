@@ -116,7 +116,7 @@ router.get("/health", async (req, res) => {
 router.get("/search", async (req, res) => {
   const searchTerm = decodeURIComponent(req.query.q);
   if (!searchTerm || searchTerm.trim() === "") {
-    return res.status(400).json({ error: "Search term cannot be empty" });
+    return res.status(400).redirect("/");
   }
   try {
     const foundBlogs = await blogpostModel.find({
@@ -248,6 +248,24 @@ router.get("/:blogId", async (req, res) => {
   }
 });
 
+router.post("/register", async (req, res) => {
+  const userInfo = req.body;
+
+  try {
+    await userModel.create(userInfo);
+
+    res.clearCookie("id");
+
+    res.cookie("id", req.body.username);
+
+    res.redirect("/");
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+
+  // res.render("register");
+});
+
 router.post("/:blogId", async (req, res) => {
   const { blogId } = req.params;
   const commentInfo = req.body;
@@ -291,24 +309,6 @@ router.get("/images/:file", (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-});
-router.post("/register", async (req, res) => {
-  const userInfo = req.body;
-
-  try {
-    await userModel.create(userInfo);
-
-    res.clearCookie("id");
-    res.clearCookie("dis");
-
-    res.cookie("id", req.body.username);
-
-    res.redirect("/");
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-
-  // res.render("register");
 });
 
 router.delete("/profile/:blogId", async (req, res) => {

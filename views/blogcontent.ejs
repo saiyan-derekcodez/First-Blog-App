@@ -27,12 +27,31 @@
       div.image > div.container-fluid > div.row > *{
         padding: 0 !important;
       }
+      /* public/css/style.css */
+
+.notification {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  z-index: 9999;
+}
+
+.notification.show {
+  display: block;
+}
+
     </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg bg-dark">
       <div class="container-fluid text-light">
-        <a class="navbar-brand me-auto" href="#">Boggings</a>
+        <a class="navbar-brand me-auto" href="/">Boggings</a>
         <button
           class="navbar-toggler "
           type="button"
@@ -116,6 +135,7 @@
       </div>
     </div>
 
+    
     <div class="pad" >
       <div class="container-fluid mt-3"  >
         <div class="row">
@@ -180,7 +200,7 @@
               </div>
             </div>
   
-            <form class="row g-3 needs-validation" action="/:blogId" method="post">
+            <form class="row g-3 needs-validation" id="commentsForm" action="/:blogId" method="post">
                <div class="col-md-12 position-relative">
                  <h4>LEAVE A REPLY</h4>
                  <p>write a comment on this post</p>

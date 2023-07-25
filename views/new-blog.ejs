@@ -16,7 +16,7 @@
   <body>
     <nav class="navbar navbar-expand-lg bg-dark">
       <div class="container-fluid text-light">
-        <a class="navbar-brand me-auto" href="#">Boggings</a>
+        <a class="navbar-brand me-auto" href="/">Boggings</a>
         <button
           class="navbar-toggler "
           type="button"
@@ -117,10 +117,10 @@
     />
   </div>
   <div class="col-md-12 position-relative">
-    <label for="image" class="form-label" id="imageLabel"><h5>Add a picture</h5></label>
-    <!-- <input class="form-control" type="text" id="image" name="image" > -->
-    <input class="form-control" type="file" id="image" name="image" multiple>
-  </div>
+  <label for="image" class="form-label" id="imageLabel"><h5>Add a picture</h5></label>
+  <input class="form-control" type="file" id="image" name="image" accept="image/jpeg,image/png" multiple>
+</div>
+
   <div class="col-md-12 position-relative">
     <label for="content" class="form-label"><h5>Content</h5></label>
     <textarea class="form-control" id="content" name="content" rows="4"></textarea>
